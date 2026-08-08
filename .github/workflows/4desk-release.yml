@@ -1,0 +1,18 @@
+# 4desk release pipeline: push a tag like v0.1.0 to build and publish
+# 4desk-branded installers via the (rebranded) upstream build workflow.
+# 4desk versions are SemVer, decoupled from the upstream RustDesk base
+# (record the upstream base in the GitHub Release notes).
+name: 4desk Release
+
+on:
+  push:
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+"
+
+jobs:
+  build:
+    uses: ./.github/workflows/flutter-build.yml
+    with:
+      upload-artifact: true
+      upload-tag: ${{ github.ref_name }}
+    secrets: inherit
