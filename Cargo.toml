@@ -4,7 +4,7 @@ version = "1.4.9"
 authors = ["rustdesk <info@rustdesk.com>"]
 edition = "2021"
 build= "build.rs"
-description = "4desk Remote Desktop"
+description = "4Desk Remote Desktop"
 default-run = "4desk"
 rust-version = "1.75"
 

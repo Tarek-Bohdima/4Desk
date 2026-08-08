@@ -1,6 +1,6 @@
-# How to cut a 4desk release
+# How to cut a 4Desk release
 
-Versioning: 4desk uses its own SemVer (`v0.1.0`, `v0.2.0`, …), independent of the upstream RustDesk base. Always record the upstream base version in the release notes.
+Versioning: 4Desk uses its own SemVer (`v0.1.0`, `v0.2.0`, …), independent of the upstream RustDesk base. Always record the upstream base version in the release notes.
 
 1. **Sync**: optionally [merge the latest upstream release](merge-upstream.md) first — never release with unreviewed upstream changes.
 2. **Bump versions** in one PR (issue-tracked): `Cargo.toml` `version`, `flutter/pubspec.yaml` `version`, `VERSION` env in `.github/workflows/flutter-build.yml`.

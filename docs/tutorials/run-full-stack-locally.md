@@ -1,4 +1,4 @@
-# Tutorial: run the full 4desk stack locally
+# Tutorial: run the full 4Desk stack locally
 
 You will run the signaling server + admin panel on your machine and connect a locally built client to it. Prerequisite: [dev environment](dev-environment-macos.md), Docker Desktop.
 
@@ -26,6 +26,6 @@ python3 build.py --flutter
 
 ## 3. Connect
 
-Launch 4desk on two machines (or one machine + an Android emulator running the APK). Each client registers an ID with your hbbs; enter one client's ID in the other and connect. In the admin panel you should see both devices under Devices.
+Launch 4Desk on two machines (or one machine + an Android emulator running the APK). Each client registers an ID with your hbbs; enter one client's ID in the other and connect. In the admin panel you should see both devices under Devices.
 
 Troubleshooting: firewall must allow TCP 21114-21119 and UDP 21116 to the server machine; both clients must use the same key (`server/data/id_ed25519.pub`).

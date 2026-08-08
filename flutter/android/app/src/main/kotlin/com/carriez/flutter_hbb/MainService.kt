@@ -46,7 +46,7 @@ import java.nio.ByteBuffer
 import kotlin.math.max
 import kotlin.math.min
 
-const val DEFAULT_NOTIFY_TITLE = "4desk"
+const val DEFAULT_NOTIFY_TITLE = "4Desk"
 const val DEFAULT_NOTIFY_TEXT = "Service is running"
 const val DEFAULT_NOTIFY_ID = 1
 const val NOTIFY_ID_OFFSET = 100
@@ -599,12 +599,12 @@ class MainService : Service() {
         notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         notificationChannel = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channelId = "4desk"
-            val channelName = "4desk Service"
+            val channelName = "4Desk Service"
             val channel = NotificationChannel(
                 channelId,
                 channelName, NotificationManager.IMPORTANCE_HIGH
             ).apply {
-                description = "4desk Service Channel"
+                description = "4Desk Service Channel"
             }
             channel.lightColor = Color.BLUE
             channel.lockscreenVisibility = Notification.VISIBILITY_PRIVATE

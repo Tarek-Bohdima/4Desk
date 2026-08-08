@@ -19,11 +19,11 @@ The rebrand was engineered so that upstream churn lands almost entirely in code 
 | Point edits (Inno GUID, whiteboard titles, updater filenames, Android labels, macOS xcconfig) | **Low** | One-line diffs; conflict only if upstream edits the same line |
 | `flutter-build.yml`, `build.py`, renamed `res/` packaging files | **Moderate** | Mechanical `rustdesk-` → `4desk-` renames across many lines that upstream also edits |
 
-**Resolution rule for the moderate zone:** take upstream's structure, re-apply the 4desk name. Never fight upstream's refactors — the rename is mechanical and can always be re-run.
+**Resolution rule for the moderate zone:** take upstream's structure, re-apply the 4Desk name. Never fight upstream's refactors — the rename is mechanical and can always be re-run.
 
 Realistic cost per upstream release: minutes to an hour, mostly in packaging/CI files, verified by the quality gates plus a local smoke test.
 
 ## The two habits that keep merges cheap
 
 1. Merge upstream **release tags** promptly (one issue-tracked PR per release, upstream base recorded in release notes).
-2. Never scatter 4desk changes through upstream files — new code goes in `four_desk/` modules behind feature flags, touching upstream only at single-line integration points.
+2. Never scatter 4Desk changes through upstream files — new code goes in `four_desk/` modules behind feature flags, touching upstream only at single-line integration points.

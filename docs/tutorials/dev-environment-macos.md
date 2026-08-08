@@ -1,6 +1,6 @@
-# Tutorial: set up a 4desk dev environment on macOS
+# Tutorial: set up a 4Desk dev environment on macOS
 
-By the end you will build and run the 4desk desktop client from source on macOS (Intel or Apple Silicon).
+By the end you will build and run the 4Desk desktop client from source on macOS (Intel or Apple Silicon).
 
 ## 1. Install toolchains
 
@@ -49,7 +49,7 @@ Known macOS gotchas (verified on Intel, Flutter 3.44):
 - **Flutter ≥3.27 API renames**: the committed sources target Flutter 3.24.5. On newer Flutter, apply `.github/patches/apply_flutter_3.44_source_patches.sh` before building (needs GNU sed — `brew install gnu-sed`; do **not** commit the resulting changes).
 - **Ad-hoc signature mismatch**: if the built app dies instantly with `Library not loaded: FlutterMacOS...different Team IDs`, re-sign the bundle: `codesign --force --deep -s - <path>/4desk.app`.
 
-The app should launch showing the **4desk** name and register an ID against the trial server (check `docker logs 4desk-hbbs` for `update_pk`). To point a debug build at your own server at build time:
+The app should launch showing the **4Desk** name and register an ID against the trial server (check `docker logs 4desk-hbbs` for `update_pk`). To point a debug build at your own server at build time:
 
 ```sh
 FOURDESK_ID_SERVER=192.168.1.19 FOURDESK_RS_PUB_KEY="<contents of server data/id_ed25519.pub>" python3 build.py --flutter

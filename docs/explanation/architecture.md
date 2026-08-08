@@ -3,7 +3,7 @@
 ## The moving parts
 
 ```
-4desk client (this repo)          server stack (workspace ../server, Docker)
+4Desk client (this repo)          server stack (workspace ../server, Docker)
 ┌─────────────────────────┐       ┌─────────┐  ┌─────────┐  ┌──────────────┐
 │ Flutter UI (flutter/)   │◄─────►│  hbbs   │  │  hbbr   │  │ rustdesk-api │
 │   │ FFI                 │       │ ID/     │  │ relay   │  │ admin panel, │
@@ -18,7 +18,7 @@
 
 ## Fork strategy
 
-Public fork of rustdesk/rustdesk (AGPL-3.0), base pinned to a stable upstream tag; `upstream` remote for merges. The whole design optimizes for **small delta**: brand identity centralized in the hbb_common fork, all 4desk features isolated in `src/four_desk/` + `flutter/lib/four_desk/` behind feature flags, upstream files touched only at explicit integration points. Proprietary business logic (garage management, billing, …) must live in private server-side services that the client talks to over the network — never in this repo.
+Public fork of rustdesk/rustdesk (AGPL-3.0), base pinned to a stable upstream tag; `upstream` remote for merges. The whole design optimizes for **small delta**: brand identity centralized in the hbb_common fork, all 4Desk features isolated in `src/four_desk/` + `flutter/lib/four_desk/` behind feature flags, upstream files touched only at explicit integration points. Proprietary business logic (garage management, billing, …) must live in private server-side services that the client talks to over the network — never in this repo.
 
 ## Why Flutter stays
 
