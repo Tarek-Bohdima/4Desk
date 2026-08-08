@@ -4,8 +4,9 @@
 name: 4desk CI
 
 on:
+  # All PRs, regardless of base — stacked PRs (base = another feature branch)
+  # need the required gates to report too, or the stack can never merge.
   pull_request:
-    branches: ["4desk/main"]
   push:
     branches: ["4desk/main"]
 
