@@ -39,7 +39,7 @@ def generate_md5_table(folder: str, level) -> dict:
 def write_package_metadata(md5_table: dict, output_folder: str, exe: str):
     output_path = os.path.join(output_folder, "data.bin")
     with open(output_path, "wb") as f:
-        f.write("rustdesk".encode(encoding=encoding))
+        f.write("fourdesk".encode(encoding=encoding))
         for path in md5_table.keys():
             (compressed_data, md5_code) = md5_table[path]
             data_length = len(compressed_data)
@@ -54,7 +54,7 @@ def write_package_metadata(md5_table: dict, output_folder: str, exe: str):
             # md5 code
             f.write(md5_code)
         # end
-        f.write("rustdesk".encode(encoding=encoding))
+        f.write("fourdesk".encode(encoding=encoding))
         # executable
         f.write(exe.encode(encoding='utf-8'))
     print(f"Metadata has been written to {output_path}")
