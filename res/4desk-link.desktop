@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=4desk
+NoDisplay=true
+MimeType=x-scheme-handler/4desk;
+TryExec=4desk
+Exec=4desk %u
+Icon=4desk
+Terminal=false
+Type=Application
+StartupNotify=false
+StartupWMClass=4desk

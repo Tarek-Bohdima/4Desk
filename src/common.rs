@@ -1080,7 +1080,8 @@ fn get_api_server_(api: String, custom: String) -> String {
             return format!("http://{}", s);
         }
     }
-    "https://admin.rustdesk.com".to_owned()
+    // 4desk: default API server is the rustdesk-api container on the signaling host.
+    format!("http://{}:21114", config::RENDEZVOUS_SERVERS[0])
 }
 
 #[inline]
