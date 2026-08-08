@@ -1,11 +1,8 @@
 name: Full Flutter CI
 
+# 4desk: manual-only on this fork; PR gates live in 4desk-ci.yml.
 on:
   workflow_dispatch:
-  pull_request:
-    paths-ignore:
-    - "docs/**"
-    - "README.md"
   push:
     branches:
       - master
