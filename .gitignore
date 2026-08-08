@@ -56,3 +56,19 @@ vcpkg_installed
 flutter/lib/generated_plugin_registrant.dart
 libsciter.dylib
 flutter/web/
+# ===== 4desk additions =====
+# stray release binary (upstream ignores `rustdesk`; ours is `4desk`)
+/4desk
+# signed custom-client config blobs and signing material must never land in git
+custom.txt
+*.p12
+*.keystore
+*.jks
+id_ed25519
+id_ed25519.pub
+# bridge codegen outputs not covered upstream
+flutter/lib/generated_bridge.freezed.dart
+flutter/macos/Runner/bridge_generated.h
+flutter/ios/Runner/bridge_generated.h
+# EXCEPTION to upstream's blanket *png: golden test baselines are tracked
+!flutter/test/**/goldens/**/*.png
