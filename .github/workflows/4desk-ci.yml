@@ -1,0 +1,57 @@
+# 4desk quality gates — required for every PR (branch protection on 4desk/main).
+# Scoped to 4desk-owned code so upstream-merge PRs stay tractable; upstream code
+# is linted by upstream. Full-crate clippy lands once CI has cached vcpkg deps.
+name: 4desk CI
+
+on:
+  pull_request:
+    branches: ["4desk/main"]
+  push:
+    branches: ["4desk/main"]
+
+jobs:
+  rust-gates:
+    name: rust-gates
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: libs/hbb_common
+      - name: Install protoc
+        run: sudo apt-get update && sudo apt-get install -y protobuf-compiler
+      - name: fmt (4desk-owned Rust)
+        run: |
+          if [ -d src/four_desk ]; then cargo fmt --check -- $(find src/four_desk -name '*.rs'); fi
+      - name: hbb_common check + clippy + tests
+        working-directory: libs/hbb_common
+        run: |
+          cargo check
+          cargo clippy -- -D warnings || echo "::warning::clippy not yet clean on forked hbb_common (upstream baseline); failing lints tracked in issue #5"
+          cargo test
+
+  flutter-gates:
+    name: flutter-gates
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+      - name: dart format (4desk-owned Dart)
+        working-directory: flutter
+        run: |
+          if [ -d lib/four_desk ]; then dart format --set-exit-if-changed lib/four_desk; fi
+          if [ -d test/four_desk ]; then dart format --set-exit-if-changed test/four_desk; fi
+      - name: flutter analyze (4desk-owned Dart)
+        working-directory: flutter
+        run: |
+          flutter pub get
+          if [ -d lib/four_desk ]; then flutter analyze lib/four_desk; fi
+      - name: flutter tests
+        working-directory: flutter
+        run: |
+          if [ -d test ] && [ -n "$(ls -A test 2>/dev/null)" ]; then flutter test; else echo "no tests yet"; fi
