@@ -4,7 +4,7 @@
 
 ## "Behind master" is by design
 
-GitHub shows `4desk/main` as N commits behind `rustdesk/rustdesk:master`. That is intentional: we base on upstream **release tags** (currently 1.4.9), never on master's tip, because master carries unreleased and unstabilized work. The counter grows between upstream releases and resets (conceptually) each time we merge the next tag. Merge every upstream release promptly — small, regular merges are the whole game; letting drift accumulate is what makes forks die.
+GitHub shows `main` as N commits behind `rustdesk/rustdesk:master`. That is intentional: we base on upstream **release tags** (currently 1.4.9), never on master's tip, because master carries unreleased and unstabilized work. The counter grows between upstream releases and resets (conceptually) each time we merge the next tag. Merge every upstream release promptly — small, regular merges are the whole game; letting drift accumulate is what makes forks die.
 
 ## Conflict-surface map
 
