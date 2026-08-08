@@ -6,7 +6,7 @@
 | macOS org prefix | `com.fourdesk` | hbb_common `ORG` |
 | Bundle/application id (Android, macOS, Linux) | `com.fourdesk.app` | `flutter/android/app/build.gradle`, `flutter/macos/Runner/Configs/AppInfo.xcconfig`, `flutter/linux/CMakeLists.txt` |
 | URI scheme | `4desk://` | derived from app name (`get_uri_prefix()`) |
-| Binary name | `4Desk` (`[[bin]]` in `Cargo.toml`); lib stays `librustdesk` | `Cargo.toml`, Flutter runner CMake |
+| Binary name | `4desk` (`[[bin]]` in `Cargo.toml`, lowercase by convention); lib stays `librustdesk` | `Cargo.toml`, Flutter runner CMake |
 | Default ID server | `192.168.1.19` (trial) — override `FOURDESK_ID_SERVER` | hbb_common `RENDEZVOUS_SERVERS` |
 | Server public key | trial key — override `FOURDESK_RS_PUB_KEY` | hbb_common `RS_PUB_KEY` |
 | Windows installer GUID | `{D5E41269-54AB-44A5-9D39-DC0ADA85C049}_is1` | `src/platform/windows.rs` |
