@@ -24,8 +24,10 @@ jobs:
       - name: Install protoc
         run: sudo apt-get update && sudo apt-get install -y protobuf-compiler
       - name: fmt (4desk-owned Rust)
+        # rustfmt directly on our files — `cargo fmt -- <files>` still checks
+        # the whole crate, and upstream code is not rustfmt-clean.
         run: |
-          if [ -d src/four_desk ]; then cargo fmt --check -- $(find src/four_desk -name '*.rs'); fi
+          if [ -d src/four_desk ]; then rustfmt --check --edition 2021 $(find src/four_desk -name '*.rs'); fi
       - name: hbb_common check + clippy + tests
         working-directory: libs/hbb_common
         run: |
