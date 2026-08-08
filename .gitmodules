@@ -1,4 +1,4 @@
 [submodule "libs/hbb_common"]
 	path = libs/hbb_common
-	url = https://github.com/Tarek-Bohdima/4desk-hbb-common
+	url = https://github.com/Tarek-Bohdima/4Desk-hbb-common
 	branch = 4desk/main

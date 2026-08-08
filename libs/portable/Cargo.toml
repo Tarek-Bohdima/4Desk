@@ -2,7 +2,7 @@
 name = "rustdesk-portable-packer"
 version = "1.4.9"
 edition = "2021"
-description = "4desk Remote Desktop"
+description = "4Desk Remote Desktop"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -27,9 +27,9 @@ native-windows-gui = {version = "1.0", default-features = false, features = ["an
 
 [package.metadata.winres]
 LegalCopyright = "Copyright © 2026 Purslane Tech Pte. Ltd. All rights reserved."
-ProductName = "4desk"
+ProductName = "4Desk"
 OriginalFilename = "4desk.exe"
-FileDescription = "4desk Remote Desktop"
+FileDescription = "4Desk Remote Desktop"
 #ProductVersion = ""
 
 [target.'cfg(target_os="windows")'.build-dependencies]

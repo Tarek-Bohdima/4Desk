@@ -1,4 +1,4 @@
-# Rebrand surface: RustDesk → 4desk
+# Rebrand surface: RustDesk → 4Desk
 
 **Explanation (Diátaxis).** Maps every branding touch point in the codebase (audited at upstream tag 1.4.9) and the mechanism used to change it. Governing principle: smallest possible diff against upstream so `git merge upstream/master` stays cheap.
 
@@ -15,11 +15,11 @@ The runtime app name lives in `config::APP_NAME` (`libs/hbb_common/src/config.rs
 
 Also in `hbb_common/src/config.rs`: `ORG` (macOS bundle prefix), `RENDEZVOUS_SERVERS`, `RS_PUB_KEY`, `PROD_RENDEZVOUS_SERVER`, config-dir/`RustDesk2.toml` naming.
 
-**Decision: fork hbb_common** (as `4desk-hbb-common`), set `APP_NAME = "4desk"`, `ORG`, and our server/key defaults there; point `.gitmodules` at the fork. This beats the alternative (RustDesk's signed `custom.txt` mechanism, `src/common.rs:2083-2249`) because that blob is verified against RustDesk's hardcoded pubkey (`src/common.rs:2185`) — usable only via a 1-line key swap plus our own signing pipeline; more moving parts for the same result. We may adopt it later for per-customer config.
+**Decision: fork hbb_common** (as `4desk-hbb-common`), set `APP_NAME = "4Desk"`, `ORG`, and our server/key defaults there; point `.gitmodules` at the fork. This beats the alternative (RustDesk's signed `custom.txt` mechanism, `src/common.rs:2083-2249`) because that blob is verified against RustDesk's hardcoded pubkey (`src/common.rs:2185`) — usable only via a 1-line key swap plus our own signing pipeline; more moving parts for the same result. We may adopt it later for per-customer config.
 
 ## Deliberate side effect
 
-With `APP_NAME != "RustDesk"`, `is_rustdesk()` (`src/common.rs:1009`) turns false and `is_custom_client()` (`src/common.rs:2284`) turns true → upstream update checks and rustdesk.com-specific paths disable themselves. This is desired for 4desk; revisit if any gated feature is missed.
+With `APP_NAME != "RustDesk"`, `is_rustdesk()` (`src/common.rs:1009`) turns false and `is_custom_client()` (`src/common.rs:2284`) turns true → upstream update checks and rustdesk.com-specific paths disable themselves. This is desired for 4Desk; revisit if any gated feature is missed.
 
 ## Unavoidable source edits (small, enumerable)
 
@@ -46,7 +46,7 @@ Replace `res/icon.png` + `res/mac-icon.png`, rerun `flutter_launcher_icons` (con
 
 ## Packaging & CI
 
-- MSI already parametrized: pass `--app-name 4desk` to `res/msi/preprocess.py` (no source edits).
+- MSI already parametrized: pass `--app-name 4Desk` to `res/msi/preprocess.py` (no source edits).
 - `build.py:17` `hbb_name` + hardcoded deb/dmg/portable paths — edit once.
 - Static Linux assets renamed + edited: `res/rustdesk{,-link}.desktop`, `res/rustdesk.service`, `res/pam.d/`, `res/PKGBUILD`, `res/rpm*.spec`, `res/DEBIAN/*`.
 - AppImage `appimage/AppImageBuilder-*.yml:5-22`; Flatpak `flatpak/rustdesk.json` + `com.rustdesk.RustDesk.metainfo.xml` (rename file to new app-id).
@@ -57,6 +57,6 @@ Replace `res/icon.png` + `res/mac-icon.png`, rerun `flutter_launcher_icons` (con
 1. Fork + edit hbb_common (APP_NAME/ORG/server defaults), repoint `.gitmodules`.
 2. Rust edits listed above.
 3. Platform manifests (Android/macOS/Windows/Linux; iOS deferred).
-4. Assets once the 4desk logo exists.
+4. Assets once the 4Desk logo exists.
 5. `build.py`/`res/` packaging + CI `PKG_NAME` overlay.
-6. Verify: macOS build shows 4desk branding and connects to the trial server.
+6. Verify: macOS build shows 4Desk branding and connects to the trial server.

@@ -4,13 +4,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-4desk: a rebranded fork of RustDesk (base: upstream tag 1.4.9) — remote desktop for garages. Rust core + Flutter UI. `libs/hbb_common` is a **forked submodule** (Tarek-Bohdima/4desk-hbb-common, branch `4desk/main`) holding `APP_NAME`, `ORG`, and default server/key. AGPL-3.0: this repo stays public; proprietary logic belongs in private server-side services, never here.
+4Desk: a rebranded fork of RustDesk (base: upstream tag 1.4.9) — remote desktop for garages. Rust core + Flutter UI. `libs/hbb_common` is a **forked submodule** (Tarek-Bohdima/4desk-hbb-common, branch `4desk/main`) holding `APP_NAME`, `ORG`, and default server/key. AGPL-3.0: this repo stays public; proprietary logic belongs in private server-side services, never here.
 
 ## Hard rules (user-mandated, non-negotiable)
 
 1. **TDD**: write the failing test first. **Never modify existing unit/instrumentation/E2E tests to make them pass** — fix the code; changing test expectations requires Tarek's explicit sign-off.
 2. **Every PR links a tracking issue** (`Closes #N`) with acceptance criteria. Create the issue before the PR. Use `-R Tarek-Bohdima/4desk` with `gh` (fork defaults to upstream otherwise).
-3. **Minimal upstream diff**: new 4desk code lives in `src/four_desk/` and `flutter/lib/four_desk/`, touching upstream files only at small integration points, behind feature flags. Cheap `git merge upstream/master` is a top priority.
+3. **Minimal upstream diff**: new 4Desk code lives in `src/four_desk/` and `flutter/lib/four_desk/`, touching upstream files only at small integration points, behind feature flags. Cheap `git merge upstream/master` is a top priority.
 4. Quality gates before merge: `cargo fmt --check`, `cargo clippy -- -D warnings`, `dart format --set-exit-if-changed .`, `flutter analyze`, full tests.
 5. **Merge policy** (see `docs/how-to/merge-policy.md`): upstream-sync PRs use a **merge commit** (never squash — it breaks shared ancestry and future merges); all other PRs are **squashed**. Prefer independent PRs off `4desk/main`; use GitHub stacks only for genuinely dependent work. Head branches auto-delete on merge; retarget stacked PRs before any manual branch deletion.
 6. Every `four_desk` widget ships with a **golden test** (`matchesGoldenFile`); goldens update only via a deliberate `--update-goldens` commit.
@@ -26,7 +26,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Branding rules
 
-Runtime name comes from `config::APP_NAME` (hbb_common) via `get_app_name()`; translations auto-substitute "RustDesk" at lookup (`src/lang.rs`) — **never edit `src/lang/*.rs`**. Keep untouched: crate name `rustdesk`, lib `librustdesk`, Flutter package `flutter_hbb`, Kotlin package path `com.carriez.flutter_hbb`, Linux channel names `org.rustdesk.rustdesk/*`, wire-protocol identifiers (`kPlatformAdditionsRustDesk*`, IDD driver names). Binary is renamed via `[[bin]] name = "4desk"` in Cargo.toml. Full map: `docs/explanation/rebrand-surface.md`.
+Runtime name comes from `config::APP_NAME` (hbb_common) via `get_app_name()`; translations auto-substitute "RustDesk" at lookup (`src/lang.rs`) — **never edit `src/lang/*.rs`**. Keep untouched: crate name `rustdesk`, lib `librustdesk`, Flutter package `flutter_hbb`, Kotlin package path `com.carriez.flutter_hbb`, Linux channel names `org.rustdesk.rustdesk/*`, wire-protocol identifiers (`kPlatformAdditionsRustDesk*`, IDD driver names). Binary is renamed via `[[bin]] name = "4Desk"` in Cargo.toml. Full map: `docs/explanation/rebrand-surface.md`.
 
 ## Upstream merges
 

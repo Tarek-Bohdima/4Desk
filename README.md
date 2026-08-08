@@ -1,8 +1,8 @@
-<h1 align="center">4desk</h1>
+<h1 align="center">4Desk</h1>
 
 Remote desktop for garages — control shop PCs, diagnostic stations, and tablets from anywhere, on your own self-hosted infrastructure.
 
-4desk is a fork of [RustDesk](https://github.com/rustdesk/rustdesk) (based on upstream release 1.4.9), rebranded and extended for garage workflows. Enormous credit to the RustDesk authors — the remote-desktop engine (Rust) and UI (Flutter) are their work. Licensed under [AGPL-3.0](LICENCE); the complete source of every distributed 4desk build lives in this repository.
+4Desk is a fork of [RustDesk](https://github.com/rustdesk/rustdesk) (based on upstream release 1.4.9), rebranded and extended for garage workflows. Enormous credit to the RustDesk authors — the remote-desktop engine (Rust) and UI (Flutter) are their work. Licensed under [AGPL-3.0](LICENCE); the complete source of every distributed 4Desk build lives in this repository.
 
 > [!Caution]
 > **Misuse disclaimer:** unauthorized access, control, or invasion of privacy with this software is strictly against our guidelines. The authors are not responsible for misuse of the application.
@@ -20,7 +20,7 @@ Windows, macOS, Linux, Android (phones/tablets); iOS/iPadOS and web planned.
 
 ## Repository layout
 
-- Rust core: `src/`, `libs/` (screen capture, input, codecs, networking). `libs/hbb_common` is a forked submodule carrying 4desk identity and server defaults.
+- Rust core: `src/`, `libs/` (screen capture, input, codecs, networking). `libs/hbb_common` is a forked submodule carrying 4Desk identity and server defaults.
 - Flutter UI: `flutter/` (desktop + mobile). 4desk-specific code is isolated in `src/four_desk/` and `flutter/lib/four_desk/`, feature-flagged.
 - The server stack (hbbs/hbbr + admin panel) lives in the workspace's sibling `server/` directory, not in this repo.
 

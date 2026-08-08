@@ -1,6 +1,6 @@
 # How to merge upstream RustDesk updates
 
-Goal: absorb upstream fixes/features while keeping the 4desk delta intact. Do this at least for every upstream stable release (security fixes!).
+Goal: absorb upstream fixes/features while keeping the 4Desk delta intact. Do this at least for every upstream stable release (security fixes!).
 
 ## Main repo
 
@@ -12,7 +12,7 @@ git merge <version>            # e.g. 1.5.0 — merge release tags, not master t
 
 Conflict rules of thumb:
 - `src/lang/*.rs`: always take upstream (we never edit them).
-- Brand-touched files (see `docs/explanation/rebrand-surface.md`): re-apply the 4desk value; the diff is deliberately tiny.
+- Brand-touched files (see `docs/explanation/rebrand-surface.md`): re-apply the 4Desk value; the diff is deliberately tiny.
 - `src/four_desk/`, `flutter/lib/four_desk/`: ours only, upstream never touches them.
 
 Then run the quality gates (fmt, clippy, dart format, analyze, full tests), smoke-test locally, open a PR with a tracking issue noting the new upstream base version.
@@ -31,4 +31,4 @@ cd ../.. && git add libs/hbb_common   # bump submodule pointer in the same PR
 
 ## After merging
 
-Update the base-version note in README.md and record the upstream version in the release notes of the next 4desk release.
+Update the base-version note in README.md and record the upstream version in the release notes of the next 4Desk release.

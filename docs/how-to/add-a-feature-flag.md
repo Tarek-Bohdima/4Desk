@@ -1,6 +1,6 @@
 # How to add a feature flag
 
-Every 4desk feature is toggleable and isolated. Steps (TDD — tests first):
+Every 4Desk feature is toggleable and isolated. Steps (TDD — tests first):
 
 1. **Tracking issue** with acceptance criteria (hard rule; every PR links one).
 2. **Register the flag** in both registries, same key:
