@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-4Desk: a rebranded fork of RustDesk (base: upstream tag 1.4.9) — remote desktop for garages. Rust core + Flutter UI. `libs/hbb_common` is a **forked submodule** (Tarek-Bohdima/4desk-hbb-common, branch `4desk/main`) holding `APP_NAME`, `ORG`, and default server/key. AGPL-3.0: this repo stays public; proprietary logic belongs in private server-side services, never here.
+4Desk: a rebranded fork of RustDesk (base: upstream tag 1.4.9) — remote desktop for garages. Rust core + Flutter UI. `libs/hbb_common` is a **forked submodule** (Tarek-Bohdima/4desk-hbb-common, branch `main`) holding `APP_NAME`, `ORG`, and default server/key. AGPL-3.0: this repo stays public; proprietary logic belongs in private server-side services, never here.
 
 ## Hard rules (user-mandated, non-negotiable)
 
@@ -12,7 +12,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 2. **Every PR links a tracking issue** (`Closes #N`) with acceptance criteria. Create the issue before the PR. Use `-R Tarek-Bohdima/4desk` with `gh` (fork defaults to upstream otherwise).
 3. **Minimal upstream diff**: new 4Desk code lives in `src/four_desk/` and `flutter/lib/four_desk/`, touching upstream files only at small integration points, behind feature flags. Cheap `git merge upstream/master` is a top priority.
 4. Quality gates before merge: `cargo fmt --check`, `cargo clippy -- -D warnings`, `dart format --set-exit-if-changed .`, `flutter analyze`, full tests.
-5. **Merge policy** (see `docs/how-to/merge-policy.md`): upstream-sync PRs use a **merge commit** (never squash — it breaks shared ancestry and future merges); all other PRs are **squashed**. Prefer independent PRs off `4desk/main`; use GitHub stacks only for genuinely dependent work. Head branches auto-delete on merge; retarget stacked PRs before any manual branch deletion.
+5. **Merge policy** (see `docs/how-to/merge-policy.md`): upstream-sync PRs use a **merge commit** (never squash — it breaks shared ancestry and future merges); all other PRs are **squashed**. Prefer independent PRs off `main`; use GitHub stacks only for genuinely dependent work. Head branches auto-delete on merge; retarget stacked PRs before any manual branch deletion.
 6. Every `four_desk` widget ships with a **golden test** (`matchesGoldenFile`); goldens update only via a deliberate `--update-goldens` commit.
 
 ## Commands
@@ -30,4 +30,4 @@ Runtime name comes from `config::APP_NAME` (hbb_common) via `get_app_name()`; tr
 
 ## Upstream merges
 
-`git fetch upstream && git merge <upstream-tag>` into a branch off `4desk/main`; resolve, run gates, PR. hbb_common fork merges upstream separately, then bump the submodule pointer. See `docs/how-to/merge-upstream.md`.
+`git fetch upstream && git merge <upstream-tag>` into a branch off `main`; resolve, run gates, PR. hbb_common fork merges upstream separately, then bump the submodule pointer. See `docs/how-to/merge-upstream.md`.

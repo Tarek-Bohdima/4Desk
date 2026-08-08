@@ -6,7 +6,7 @@ Goal: absorb upstream fixes/features while keeping the 4Desk delta intact. Do th
 
 ```sh
 git fetch upstream --tags
-git checkout -b merge/upstream-<version> 4desk/main
+git checkout -b merge/upstream-<version> main
 git merge <version>            # e.g. 1.5.0 — merge release tags, not master tip
 ```
 
@@ -19,13 +19,13 @@ Then run the quality gates (fmt, clippy, dart format, analyze, full tests), smok
 
 ## hbb_common submodule
 
-The fork lives at Tarek-Bohdima/4desk-hbb-common (branch `4desk/main`, remotes: `origin` = rustdesk/hbb_common, `fork` = ours).
+The fork lives at Tarek-Bohdima/4desk-hbb-common (branch `main`, remotes: `origin` = rustdesk/hbb_common, `fork` = ours).
 
 ```sh
 cd libs/hbb_common
 git fetch origin
 git merge <upstream-commit-matching-the-release>
-git push fork 4desk/main
+git push fork main
 cd ../.. && git add libs/hbb_common   # bump submodule pointer in the same PR
 ```
 
