@@ -10,3 +10,7 @@ Every 4desk feature is toggleable and isolated. Steps (TDD — tests first):
 4. **Implement the feature** in its own module: `src/four_desk/<feature>.rs` / `flutter/lib/four_desk/<feature>/`. Upstream files may only gain a minimal integration point (one call/one widget insertion) guarded by `is_enabled(...)`.
 5. **Toggle at runtime** (until server-pushed config exists): the flag reads local option `4desk-flag-<key>` = `Y`/`N`; unset falls back to the compile-time default.
 6. Callers never inspect config storage directly — always ask the flag service (Law of Demeter).
+
+## UI regression: golden tests
+
+Every `four_desk` widget ships with a golden test (`flutter_test`'s `matchesGoldenFile`; baselines under `flutter/test/four_desk/goldens/`, which are exempt from the repo's `*png` ignore). CI fails when rendering changes; updating a baseline requires a deliberate `flutter test --update-goldens` commit that reviewers see — never regenerate goldens to make a failing test pass (same hard rule as all tests). Goldens are rendered on the Linux CI runner; generate them there (or accept the CI-generated baseline) to avoid font/platform drift.
