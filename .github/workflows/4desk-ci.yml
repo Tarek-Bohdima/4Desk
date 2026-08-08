@@ -41,17 +41,24 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: stable
+          # Pin to the Flutter version the committed sources target (upstream
+          # 1.4.9 baseline); newer Flutter renames ThemeData APIs and breaks
+          # package-wide compilation.
+          flutter-version: "3.24.5"
       - name: dart format (4desk-owned Dart)
         working-directory: flutter
         run: |
           if [ -d lib/four_desk ]; then dart format --set-exit-if-changed lib/four_desk; fi
           if [ -d test/four_desk ]; then dart format --set-exit-if-changed test/four_desk; fi
-      - name: flutter analyze (4desk-owned Dart)
+      - name: dart analyze (4desk-owned Dart)
         working-directory: flutter
+        # dart analyze (not flutter analyze): path-scoped, doesn't require the
+        # flutter_rust_bridge codegen output that only exists after bridge gen.
         run: |
           flutter pub get
-          if [ -d lib/four_desk ]; then flutter analyze lib/four_desk; fi
-      - name: flutter tests
+          if [ -d lib/four_desk ]; then dart analyze lib/four_desk; fi
+          if [ -d test/four_desk ]; then dart analyze test/four_desk; fi
+      - name: flutter tests (4desk-owned)
         working-directory: flutter
         run: |
-          if [ -d test ] && [ -n "$(ls -A test 2>/dev/null)" ]; then flutter test; else echo "no tests yet"; fi
+          if [ -d test/four_desk ]; then flutter test test/four_desk; else echo "no 4desk tests yet"; fi
