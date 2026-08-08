@@ -1,4 +1,4 @@
-# 4desk quality gates — required for every PR (branch protection on 4desk/main).
+# 4desk quality gates — required for every PR (branch protection on main).
 # Scoped to 4desk-owned code so upstream-merge PRs stay tractable; upstream code
 # is linted by upstream. Full-crate clippy lands once CI has cached vcpkg deps.
 name: 4desk CI
@@ -8,7 +8,7 @@ on:
   # need the required gates to report too, or the stack can never merge.
   pull_request:
   push:
-    branches: ["4desk/main"]
+    branches: ["main"]
 
 jobs:
   # Doc-only changes skip the expensive gates. Skipped required checks still
