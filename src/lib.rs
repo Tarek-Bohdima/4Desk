@@ -74,3 +74,5 @@ pub mod privacy_mode;
 pub mod virtual_display_manager;
 
 mod kcp_stream;
+
+pub mod four_desk;
